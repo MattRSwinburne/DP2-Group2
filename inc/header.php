@@ -3,5 +3,8 @@
 </header>
 
 <nav>
-  <p>And this is the nav.  Plz to remember to PUT ACTUAL CONTENT HERE, after we check things are working.</p>
+  <p>
+    <a href="show_stock.php">Show Stock</a> |
+    <a href="add_new_stock.php">Add New Stock</a>
+  </p>
 </nav>
