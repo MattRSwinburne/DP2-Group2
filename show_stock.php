@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <title>Result</title>
+      <title>Current Stock</title>
   </head>
 
   <body>
@@ -17,7 +17,47 @@
 
     <section>
 
-      [HELLO THIS IS THE DISPLAY SECTION HI]
+      <?php
+        include_once "inc/db_connect.php";
+        //connect to db
+        $db_connect = mysqli_connect($host, $username, $pwd, $db);
+
+        //make sure it actually connects
+        if (mysqli_connect_errno())
+        {
+          echo "<p>DB Connection Error: " . mysqli_connect_error() . "</p>";
+        }
+        //Testing: if you're having trouble with the connection, uncomment for stats
+        // echo "Connection status: " . mysqli_stat($db_connect);
+
+        $query = "SELECT * FROM stock";
+        $result = mysqli_query($db_connect, $query);
+        if (mysqli_num_rows($result) > 0) {
+          ?>
+          <table>
+            <tr>
+              <th>Item</th>
+              <th>Brand</th>
+              <th>Quantity</th>
+              <th>Price</th>
+            </tr>
+            <?php
+            foreach ($result as $row) {
+              echo "<tr>\n";
+              echo "<td>" . $row[item_name] . "</td>\n";
+              echo "<td>" . $row[brand] . "</td>\n";
+              echo "<td>" . $row[qty] . "</td>\n";
+              echo "<td>$" . number_format($row[price]/100, 2) . "</td>\n";
+              echo "</tr>\n";
+            }?>
+          </table>
+          <?php
+        }
+        else {
+          echo "ERROR: Stock table is empty.";
+        }
+
+      ?>
 
     </section>
 
