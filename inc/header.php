@@ -6,6 +6,7 @@
   <p>
     <a href="show_stock.php">Show Stock</a> |
     <a href="add_new_stock.php">Add New Stock</a>
-    <a href="./AddSales.php">Add Sale Record</a>
+    | <a href="./AddSales.php">Add Sale Record</a>
+    | <a href="./DeleteSales.php">Delete Sale Record</a>
   </p>
 </nav>
