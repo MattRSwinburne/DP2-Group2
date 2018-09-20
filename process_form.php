@@ -2,8 +2,7 @@
 
   //DEFINE DATA-PROCESSING FUNCTIONS
 
-  function add_stock() {
-
+  function get_db_connect(){
     include_once 'inc/db_connect.php';
     //connect to db
     $db_connect = mysqli_connect($host, $username, $pwd, $db);
@@ -15,6 +14,12 @@
     }
     //Testing: if you're having trouble with the connection, uncomment for stats
     // echo "Connection status: " . mysqli_stat($db_connect);
+    return $db_connect;
+  }
+
+  function add_stock() {
+
+    $db_connect = get_db_connect();
 
     //set up variables
     $item_name = $_POST[item_name];
@@ -55,7 +60,37 @@
     return $msg;
   }
 
+  function edit_stock() {
+    $msg = "";
+    $db_connect = get_db_connect();
 
+    //set up variables
+    $id = $_POST[stockid];
+    $item_name = $_POST[item_name];
+    $brand = $_POST[brand];
+    $qty = $_POST[qty];
+    //for accuracy, we want to store prices as integers, not decimals
+    //so *100 to store it as cents rather than dollars
+    //REMEMBER TO RECONVERT IT ON THE OTHER SIDE!
+    $price = $_POST[price] * 100;
+
+    //set up $query
+    $edit_query = "UPDATE stock
+    SET item_name='$item_name',
+    brand='$brand',
+    qty='$qty',
+    price='$price'
+    WHERE id='$id';";
+
+    //do the edit!
+    if (mysqli_query($db_connect, $edit_query)) {
+      $msg = "Success!\r\n";
+    }
+    else {
+      $msg = "ERROR: can't add item to database?\r\n" . mysqli_error($db_connect);
+    }
+    return $msg;
+  }
 
   //start the session, so you can pass data back
   session_start();
@@ -77,6 +112,9 @@
 
   if ($form_type == "stock_add") {
     $msg = add_stock();
+  }
+  elseif ($form_type == "stock_edit") {
+    $msg = edit_stock();
   }
 
   // If you can't figure out what to do with it, throw up an error message

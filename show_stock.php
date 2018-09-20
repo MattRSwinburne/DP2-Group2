@@ -10,7 +10,9 @@
     <aside name="server_message" id="server_message">
       <?php
         session_start();
-        echo $_SESSION[msg];
+        if (isset($_SESSION[msg])) {
+          echo $_SESSION[msg];
+        }
         $_SESSION[msg] = "";
        ?>
     </aside>
@@ -40,6 +42,7 @@
               <th>Brand</th>
               <th>Quantity</th>
               <th>Price</th>
+              <th></th>
             </tr>
             <?php
             foreach ($result as $row) {
@@ -48,6 +51,7 @@
               echo "<td>" . $row[brand] . "</td>\n";
               echo "<td>" . $row[qty] . "</td>\n";
               echo "<td>$" . number_format($row[price]/100, 2) . "</td>\n";
+              echo "<td><a href='edit_stock.php?stockid=" . $row[id] . "'>edit</a>";
               echo "</tr>\n";
             }?>
           </table>
