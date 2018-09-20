@@ -32,7 +32,7 @@
         //Testing: if you're having trouble with the connection, uncomment for stats
         // echo "Connection status: " . mysqli_stat($db_connect);
 
-        $query = "SELECT * FROM stock";
+        $query = "SELECT * FROM stock WHERE active!='0'";
         $result = mysqli_query($db_connect, $query);
         if (mysqli_num_rows($result) > 0) {
           ?>
