@@ -89,7 +89,7 @@ else
 	{
 		if (selection.value != "")
 		{
-			price.innerHTML = items[selection.value].price * quantity.value;
+			price.innerHTML = items[selection.value].price / 100 * quantity.value;
 		}
 		else
 		{
