@@ -90,7 +90,7 @@ else
 					itemName.innerHTML = items[stockIdx].item_name;
 					brand.innerHTML = items[stockIdx].brand;
 					quantity.innerHTML = items[stockIdx].qty;
-					price.innerHTML = items[stockIdx].price;
+					price.innerHTML = items[stockIdx].price / 100;
 					break;
 				}
 			}
