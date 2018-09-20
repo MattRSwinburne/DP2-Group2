@@ -10,10 +10,10 @@
     <aside name="server_message" id="server_message">
       <?php
         session_start();
-        if (isset($_SESSION[msg])) {
-          echo $_SESSION[msg];
+        if (isset($_SESSION['msg'])) {
+          echo $_SESSION['msg'];
         }
-        $_SESSION[msg] = "";
+        $_SESSION['msg'] = "";
        ?>
     </aside>
 
@@ -47,11 +47,11 @@
             <?php
             foreach ($result as $row) {
               echo "<tr>\n";
-              echo "<td>" . $row[item_name] . "</td>\n";
-              echo "<td>" . $row[brand] . "</td>\n";
-              echo "<td>" . $row[qty] . "</td>\n";
-              echo "<td>$" . number_format($row[price]/100, 2) . "</td>\n";
-              echo "<td><a href='edit_stock.php?stockid=" . $row[id] . "'>edit</a>";
+              echo "<td>" . $row['item_name'] . "</td>\n";
+              echo "<td>" . $row['brand'] . "</td>\n";
+              echo "<td>" . $row['qty'] . "</td>\n";
+              echo "<td>$" . number_format($row['price']/100, 2) . "</td>\n";
+              echo "<td><a href='edit_stock.php?stockid=" . $row['id'] . "'>edit</a>";
               echo "</tr>\n";
             }?>
           </table>

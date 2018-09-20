@@ -46,20 +46,20 @@
             ?>
             <form action="process_form.php" method="post">
               <input type="hidden" name="form_type" id="form_type" value="stock_edit" />
-              <input type="hidden" name="stockid" id="stockid" value="<?php echo $_GET[stockid] ?>" />
+              <input type="hidden" name="stockid" id="stockid" value="<?php echo $_GET['stockid'] ?>" />
               <label for="item_name">Name: </label>
-              <input type="text" name="item_name" id="item_name" value="<?php echo $editing[item_name] ?>" />
+              <input type="text" name="item_name" id="item_name" value="<?php echo $editing['item_name'] ?>" />
               <br />
               <label for="brand">Brand: </label>
-              <input type="text" name="brand" id="brand" value="<?php echo $editing[brand] ?>"/>
+              <input type="text" name="brand" id="brand" value="<?php echo $editing['brand'] ?>"/>
               <br />
               <label for="qty">Quantity: </label>
-              <input type="number" name="qty" id="qty" value="<?php echo $editing[qty] ?>"/>
+              <input type="number" name="qty" id="qty" value="<?php echo $editing['qty'] ?>"/>
               <br />
               <label for="price">Price: </label>
               <!-- The below ALLOWS two decimal places, but trailing 0s will be cut off :(-->
               <!-- Cannot be fixed without javascript, so am leaving it at the moment.-->
-              <input type="number" step="any" name="price" id="price" value="<?php echo number_format($editing[price]/100, 2) ?>"/>
+              <input type="number" step="any" name="price" id="price" value="<?php echo number_format($editing['price']/100, 2) ?>"/>
               <br />
               <button type="submit">Submit</button> <button type="reset">Reset</button>
             </form>
