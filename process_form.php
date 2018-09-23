@@ -38,6 +38,7 @@
     $insert = "INSERT INTO stock (item_name, brand, qty, price)
     VALUES ('$item_name', '$brand', '$qty', '$price');";
 
+
     //Testing: uncomment to see what your queries are actually coming out as
     // echo $check . "<br />\r\n" . $insert;
 
@@ -56,7 +57,6 @@
         $msg = "ERROR: can't add item to database?\r\n" . mysqli_error($db_connect);
       }
     }
-
     return $msg;
   }
 
@@ -92,6 +92,31 @@
     return $msg;
   }
 
+  function edit_sale(){
+    $message = "";
+    $db_connect = get_db_connect();
+
+    $id = $_POST[saleid];
+    $item_id = $_POST[item_id];
+    $qty = $_POST[qty];
+    $date_time = $_POST[date_time];
+
+    $edit_query = "UPDATE sales
+    SET item_id='$item_id',
+    qty='$qty',
+    date_time='$date_time'
+    WHERE id='$id';";
+
+    //do the edit!
+    if (mysqli_query($db_connect, $edit_query)) {
+      $msg = "Success!\r\n";
+    }
+    else {
+      $msg = $edit_query;
+    }
+    return $msg;
+  }
+
   //start the session, so you can pass data back
   session_start();
 
@@ -108,7 +133,7 @@
   $msg = "";
 
   // go through and figure out what you need to do with the data
-  // TODO: Make this not a giant if statement omfg but shhh works for now
+  //* TO DO: Make this not a giant if statement omfg but shhh works for now*/
 
   if ($form_type == "stock_add") {
     $msg = add_stock();
@@ -116,6 +141,10 @@
   elseif ($form_type == "stock_edit") {
     $msg = edit_stock();
   }
+  elseif ($form_type == "sales_edit"){
+    $msg = edit_sale();
+  }
+
 
   // If you can't figure out what to do with it, throw up an error message
   else {
@@ -136,5 +165,8 @@
   //redirect stock-related things to the stock display page
   if (strstr($form_type, "stock")) {
     header("Location: /DP2-Group2/show_stock.php");
+  }
+  if (strstr($form_type, "sales")){
+    header("Location: /DP2-Group2/show_sales.php");
   }
 ?>
