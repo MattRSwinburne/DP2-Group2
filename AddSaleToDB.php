@@ -63,10 +63,11 @@ $sql = "INSERT INTO sales (id, item_id, qty, total, date_time) VALUES "
 . "(NULL, ". "'" . $selectedDBItem['id'] . "'"
 . ", " . "'" . $quantity . "'"
 . ", " . "'" . $selectedDBItem['price']*$quantity . "'"
-. ", CURRENT_TIMESTAMP)";
+. ", CURRENT_TIMESTAMP);"
+. "UPDATE stock SET qty = qty-$quantity WHERE id = " . $selectedDBItem['id'];
 
-// TODO: Have this bit point to the "Display sales record" page.
-if (mysqli_query($dbconn, $sql))
+// Redirect to the show sales page if successful
+if (mysqli_multi_query($dbconn, $sql))
 {
 	header("Location: /DP2-Group2/show_sales.php");
 }

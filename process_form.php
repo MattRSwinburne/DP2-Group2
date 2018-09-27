@@ -101,14 +101,18 @@
     $qty = $_POST[qty];
     $date_time = $_POST[date_time];
 
-    $edit_query = "UPDATE sales
+    $edit_query = "UPDATE stock
+    SET qty = qty + (SELECT qty FROM sales WHERE id = '$id') - '$qty'
+    WHERE id = '$item_id';
+
+    UPDATE sales
     SET item_id='$item_id',
     qty='$qty',
     date_time='$date_time'
     WHERE id='$id';";
 
     //do the edit!
-    if (mysqli_query($db_connect, $edit_query)) {
+    if (mysqli_multi_query($db_connect, $edit_query)) {
       $msg = "Success!\r\n";
     }
     else {
