@@ -22,7 +22,7 @@
         // echo "Connection status: " . mysqli_stat($db_connect);
 
         //if you don't have a thing you're editing yet, search for a thing!
-        if (!isset($_GET[saleid])) {
+        if (!isset($_GET['saleid'])) {
           ?>
           <form action="process_form.php" method="post">
             <input type="hidden" name="form_type" id="form_type" value="sale_edit_search" />
@@ -32,14 +32,14 @@
             echo "</form>";
         }
         else {
-          $editing_query = "SELECT * FROM sales WHERE id = " . $_GET[saleid];
+          $editing_query = "SELECT * FROM sales WHERE id = " . $_GET['saleid'];
           $editing = mysqli_query($db_connect, $editing_query);
           if (mysqli_num_rows($editing) == 0) {
             echo "ERROR: Can't find item in sales";
           }
           else {
             $editing = mysqli_fetch_assoc($editing);
-            echo "<p>You are editing " . $editing[item_id] . ".</p>";
+            echo "<p>You are editing " . $editing['item_id'] . ".</p>";
             ?>
             <form action="process_form.php" method="post">
               <input type="hidden" name="form_type" id="form_type" value="sales_edit" />

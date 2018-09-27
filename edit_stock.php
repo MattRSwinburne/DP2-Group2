@@ -22,7 +22,7 @@
         // echo "Connection status: " . mysqli_stat($db_connect);
 
         //if you don't have a thing you're editing yet, search for a thing!
-        if (!isset($_GET[stockid])) {
+        if (!isset($_GET['stockid'])) {
           ?>
           <form action="process_form.php" method="post">
             <input type="hidden" name="form_type" id="form_type" value="stock_edit_search" />
@@ -32,7 +32,7 @@
             echo "</form>";
         }
         else {
-          $editing_query = "SELECT * FROM stock WHERE id = " . $_GET[stockid];
+          $editing_query = "SELECT * FROM stock WHERE id = " . $_GET['stockid'];
           $editing = mysqli_query($db_connect, $editing_query);
           if (mysqli_num_rows($editing) > 1) {
             echo "ERROR: can only edit one item at a time.";
@@ -42,7 +42,7 @@
           }
           else {
             $editing = mysqli_fetch_assoc($editing);
-            echo "<p>You are editing " . $editing[item_name] . " (" . $editing[brand] . ").</p>";
+            echo "<p>You are editing " . $editing['item_name'] . " (" . $editing['brand'] . ").</p>";
             ?>
             <form action="process_form.php" method="post">
               <input type="hidden" name="form_type" id="form_type" value="stock_edit" />
