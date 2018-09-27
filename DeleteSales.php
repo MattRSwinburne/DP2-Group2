@@ -102,7 +102,7 @@ else
 				{
 					itemName.innerHTML = FindItemNameById(sales[saleIdx].item_id);
 					quantity.innerHTML = sales[saleIdx].qty;
-					price.innerHTML = sales[saleIdx].total;
+					price.innerHTML = sales[saleIdx].total/100;
 					dateTime.innerHTML = sales[saleIdx].date_time;
 					break;
 				}

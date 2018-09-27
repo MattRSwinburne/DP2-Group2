@@ -56,7 +56,7 @@ $sql = "DELETE FROM sales WHERE id='"
 // Landing page
 if (mysqli_query($dbconn, $sql))
 {
-	echo "Record successfully deleted!";
+	header("Location: /DP2-Group2/show_sales.php");
 }
 else
 {

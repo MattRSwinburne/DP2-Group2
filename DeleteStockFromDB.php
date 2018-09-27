@@ -55,7 +55,7 @@ $sql = "UPDATE `stock` SET `active` = '0', `qty` = '0' WHERE `stock`.`id` = " . 
 // Landing page
 if (mysqli_query($dbconn, $sql))
 {
-	echo "Record successfully deleted!";
+	header("Location: /DP2-Group2/stock_sales.php");
 }
 else
 {

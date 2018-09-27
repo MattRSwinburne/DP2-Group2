@@ -32,7 +32,7 @@ if (!$dbconn)
 }
 else
 {
-	$result = mysqli_query($dbconn, "SELECT * FROM stock");
+	$result = mysqli_query($dbconn, "SELECT * FROM stock WHERE active!=0");
 	if (mysqli_num_rows($result) > 0)
 	{
 		while ($row = mysqli_fetch_assoc($result))
@@ -68,7 +68,7 @@ $sql = "INSERT INTO sales (id, item_id, qty, total, date_time) VALUES "
 // TODO: Have this bit point to the "Display sales record" page.
 if (mysqli_query($dbconn, $sql))
 {
-	echo "Success!";
+	header("Location: /DP2-Group2/show_sales.php");
 }
 else
 {
