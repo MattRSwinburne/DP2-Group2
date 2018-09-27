@@ -6,16 +6,16 @@
 <body>
 <?php
 // Grab variables from form post
-if (isset($_POST["itemIdx"]))
+if (isset($_POST["itemId"]))
 {
-	$itemIdx = $_POST["itemIdx"];
+	$itemId = $_POST["itemId"];
 }
 if (isset($_POST["quantity"]))
 {
 	$quantity = $_POST["quantity"];
 }
 
-if (!isset($itemIdx) or !isset($quantity))
+if (!isset($itemId) or !isset($quantity))
 {
 	die("Form not properly completed.");
 }
@@ -45,7 +45,7 @@ else
 // Little bit of security to make sure the selected item has a matching record in the database
 foreach ($items as $DBItem)
 {
-	if ($items[$itemIdx] == $DBItem)
+	if ($DBItem['id'] == $itemId)
 	{
 		if ($quantity > $DBItem['qty']) die("Form data mismatch");
 
@@ -60,9 +60,9 @@ if (!isset($selectedDBItem))
 }
 
 $sql = "INSERT INTO sales (id, item_id, qty, total, date_time) VALUES "
-. "(NULL, ". "'" . $items[$itemIdx]['id'] . "'"
+. "(NULL, ". "'" . $selectedDBItem['id'] . "'"
 . ", " . "'" . $quantity . "'"
-. ", " . "'" . $items[$itemIdx]['price']*$quantity . "'"
+. ", " . "'" . $selectedDBItem['price']*$quantity . "'"
 . ", CURRENT_TIMESTAMP)";
 
 // TODO: Have this bit point to the "Display sales record" page.

@@ -17,7 +17,7 @@ if (!$dbconn)
 }
 else
 {
-	$result = mysqli_query($dbconn, "SELECT * FROM stock");
+	$result = mysqli_query($dbconn, "SELECT * FROM stock WHERE active!=0");
 	if (mysqli_num_rows($result) > 0)
 	{
 		while ($row = mysqli_fetch_assoc($result))
@@ -35,8 +35,8 @@ else
 <section>
 	<h1>New Sales Record</h1>
 	<form action="AddSaleToDB.php" method="post">
-		<label for="itemIdx">Item:</label>
-		<select id="itemIdx" name="itemIdx" onchange="OnItemChange()">
+		<label for="itemId">Item:</label>
+		<select id="itemId" name="itemId" onchange="OnItemChange()">
 			<option value=""></option>
 		</select>
 		<br />
@@ -55,7 +55,7 @@ else
 
 	<script>
 	var items = <?php echo $itemsJS; ?>;
-	var selection = document.getElementById('itemIdx');
+	var selection = document.getElementById('itemId');
 	var quantity = document.getElementById('quantity');
 	var price = document.getElementById('price');
 
@@ -65,7 +65,7 @@ else
 		{
 			let option;
 			option = document.createElement('option');
-			option.setAttribute('value', itemIdx);
+			option.setAttribute('value', items[itemIdx].id);
 			option.appendChild(document.createTextNode(items[itemIdx].item_name));
 			selection.appendChild(option);
 		}
@@ -75,7 +75,15 @@ else
 	{
 		if (selection.value != "")
 		{
-			quantity.max = items[selection.value].qty;
+			let itemIdx;
+			for (itemIdx in items)
+			{
+				if (items[itemIdx].id == selection.value)
+				{
+					quantity.max = items[itemIdx].qty;
+					return;
+				}
+			}
 		}
 		else
 		{
@@ -89,7 +97,15 @@ else
 	{
 		if (selection.value != "")
 		{
-			price.innerHTML = items[selection.value].price / 100 * quantity.value;
+			let itemIdx;
+			for (itemIdx in items)
+			{
+				if (items[itemIdx].id == selection.value)
+				{
+					price.innerHTML = items[itemIdx].price / 100 * quantity.value;
+					return;
+				}
+			}
 		}
 		else
 		{
