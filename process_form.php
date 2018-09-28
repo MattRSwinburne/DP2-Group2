@@ -2,6 +2,7 @@
 
   //DEFINE DATA-PROCESSING FUNCTIONS
 
+
   function get_db_connect(){
     include_once 'inc/db_connect.php';
     //connect to db
@@ -84,6 +85,8 @@
 
     //do the edit!
     if (mysqli_query($db_connect, $edit_query)) {
+      include_once "inc/low_stock_email.php";
+      CheckLowStock();
       $msg = "Success!\r\n";
     }
     else {
@@ -113,6 +116,8 @@
 
     //do the edit!
     if (mysqli_multi_query($db_connect, $edit_query)) {
+      include_once "inc/low_stock_email.php";
+      CheckLowStock();
       $msg = "Success!\r\n";
     }
     else {

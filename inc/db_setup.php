@@ -46,6 +46,16 @@
         } else {
           echo "Error - sales database: " .  mysqli_error($db_connect) . "</p>";
         }
+        if (mysqli_query($db_connect, $email_table_query)) {
+          echo "<p>We have email!</p>";
+        } else {
+          echo "Error - email database: " .  mysqli_error($db_connect) . "</p>";
+        }
+        if (mysqli_query($db_connect, $low_stock_trigger_query)) {
+          echo "<p>We have low stock trigger!</p>";
+        } else {
+          echo "Error - low stock trigger: " .  mysqli_error($db_connect) . "</p>";
+        }
 
       ?>
 

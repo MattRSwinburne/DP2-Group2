@@ -55,7 +55,9 @@ $sql = "UPDATE `stock` SET `active` = '0', `qty` = '0' WHERE `stock`.`id` = " . 
 // Landing page
 if (mysqli_query($dbconn, $sql))
 {
-	header("Location: /DP2-Group2/stock_sales.php");
+	require_once "inc/low_stock_email.php";
+	CheckLowStock();
+	header("Location: /DP2-Group2/show_stock.php");
 }
 else
 {

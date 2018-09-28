@@ -69,6 +69,8 @@ $sql = "INSERT INTO sales (id, item_id, qty, total, date_time) VALUES "
 // Redirect to the show sales page if successful
 if (mysqli_multi_query($dbconn, $sql))
 {
+	include_once 'inc/low_stock_email.php';
+	CheckLowStock();
 	header("Location: /DP2-Group2/show_sales.php");
 }
 else
