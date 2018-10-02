@@ -17,7 +17,7 @@ if (!$dbconn)
 }
 else
 {
-	$result = mysqli_query($dbconn, "SELECT * FROM stock WHERE active!=0");
+	$result = mysqli_query($dbconn, "SELECT * FROM stock WHERE active!=0 AND qty>0");
 	if (mysqli_num_rows($result) > 0)
 	{
 		while ($row = mysqli_fetch_assoc($result))
