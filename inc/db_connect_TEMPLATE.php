@@ -8,4 +8,6 @@ $username = '';
 $pwd = '';
 $db = '';  //I'm using 'dp2' but you can choose whatever you want!
 
+$alert_email = ''; //The email address to send the low stock warnings to
+
 ?>
