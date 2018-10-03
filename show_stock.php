@@ -17,6 +17,15 @@
        ?>
     </aside>
 
+    <aside name="search_stock" id="search_stock">
+      <form action="show_stock.php">
+        <input type="hidden" name="search" id="search" value="stock" />
+        <?php include "inc/stock_search.php" ?>
+        <button type="submit">Submit!</button>
+        <a href="show_stock.php"><button type="button">Reset</button></a>
+      </form>
+    </aside>
+
     <section>
 
       <?php
@@ -32,7 +41,22 @@
         //Testing: if you're having trouble with the connection, uncomment for stats
         // echo "Connection status: " . mysqli_stat($db_connect);
 
+
         $query = "SELECT * FROM stock WHERE active!='0'";
+        if (isset($_GET["search"])) {
+          if ($_GET["item_name"] != "") {
+            $query .= "AND item_name LIKE '%" . $_GET["item_name"] . "%'";
+          }
+          if ($_GET["brand"] != "") {
+            $query .= "AND brand LIKE '%" . $_GET["brand"] . "%'";
+          }
+          if ($_GET["qty"] != "") {
+            $query .= "AND qty" . $_GET["qty_range_symbol"] . "'" . $_GET["qty"] . "'";
+          }
+          if ($_GET["price"] != "") {
+            $query .= "AND price" . $_GET["price_range_symbol"]  . "'" . $_GET["price"]*100 . "'";
+          }
+        }
         $result = mysqli_query($db_connect, $query);
         if (mysqli_num_rows($result) > 0) {
           ?>
@@ -58,7 +82,7 @@
           <?php
         }
         else {
-          echo "ERROR: Stock table is empty.";
+          echo "No results.";
         }
 
       ?>

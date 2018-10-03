@@ -29,7 +29,9 @@
           <?php
 
             include "inc/stock_search.php";
-            echo "</form>";
+            echo  '<button type="submit">Submit!</button>';
+            echo  '<button type="reset">Reset</button>';
+            echo '</form>';
         }
         else {
           $editing_query = "SELECT * FROM stock WHERE id = " . $_GET['stockid'];
