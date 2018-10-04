@@ -47,11 +47,11 @@
               <label for="item_id">Item id: </label>
               <input type="number" name="item_id" id="item_id" value="<?php echo $editing['item_id'] ?>" />
               <br />
-              <label for="brand">Quantity </label>
+              <label for="qty">Quantity </label>
               <input type="number" name="qty" id="qty" value="<?php echo $editing['qty'] ?>"/>
               <br />
-              <label for="qty">Date:</label>
-              <input type="date" name="date_time" id="date_time" value="<?php echo $editing['date_time'] ?>"/>
+              <label for="date_time">Date:</label>
+              <input type="datetime-local" name="date_time" id="date_time" value="<?php echo date("Y-m-d\TH:i:s", strtotime($editing['date_time'])); ?>"/>
               <br />
               <button type="submit">Submit</button> <button type="reset">Reset</button>
             </form>
