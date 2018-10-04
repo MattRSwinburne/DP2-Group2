@@ -2,7 +2,7 @@
 //if you have GET values (mainly for show_stock searches), put'm in some variables
 // otherwise blank variables are fine too.
 if (!isset($_GET["item_name"])){
-  $GET["item_name"] = "";
+  $_GET["item_name"] = "";
 };
 
 if (!isset($_GET["brand"])) {
