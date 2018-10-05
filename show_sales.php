@@ -91,7 +91,7 @@
           <?php
         }
         else {
-          echo "ERROR:Sale table is empty.";
+          echo "No results.";
         }
 
       ?>
