@@ -96,7 +96,7 @@
   }
 
   function edit_sale(){
-    $message = "";
+    $msg = "";
     $db_connect = get_db_connect();
 
     $id = $_POST[saleid];
@@ -126,6 +126,102 @@
     return $msg;
   }
 
+  function export_csv_all()
+  {
+    $msg = "";
+    $db_connect = get_db_connect();
+
+    $query = "SELECT * FROM stock
+    WHERE active != '0'
+    UNION
+    SELECT sales.id, stock.item_name, stock.brand, sales.qty, sales.total, sales.date_time
+    FROM sales
+    INNER JOIN stock ON stock.id=sales.item_id
+    WHERE sales.id != '0'
+    INTO OUTFILE 'C:/files/AllReport.csv'";
+
+
+    if(mysqli_query($db_connect,$query)){
+      $msg = "Exported!\r\n";
+    }
+    else {
+      $msg = $query;
+    }
+    return $msg;
+  }
+
+  function export_csv_weekly()
+  {
+    $msg = "";
+    $msg2 = "";
+    $db_connect = get_db_connect();
+
+    $query = "SELECT * FROM stock
+    WHERE active != '0'
+    INTO OUTFILE 'C:/files/WeekReportStock.csv'";
+
+    $query2 = "SELECT sales.id, stock.item_name, stock.brand, sales.qty, sales.total, sales.date_time
+    FROM sales
+    INNER JOIN stock ON stock.id=sales.item_id
+    WHERE sales.id != '0'
+    GROUP BY WEEK(sales.date_time)
+    ORDER BY WEEK(sales.date_time)
+    INTO OUTFILE 'C:/files/WeekReportSales.csv'";
+
+
+    if(mysqli_query($db_connect,$query)){
+      $msg = "Exported!\r\n";
+    }
+    else {
+      $msg = $query;
+    }
+
+    if(mysqli_query($db_connect,$query2)){
+      $msg2 = "Exported!\r\n";
+    }
+    else {
+      $msg2 = $query;
+    }
+    return $msg;
+    return $msg2;
+  }
+
+  function export_csv_order_month()
+  {
+    $msg = "";
+    $msg2 = "";
+    $db_connect = get_db_connect();
+
+    $query = "SELECT * FROM stock
+    WHERE active != '0'
+    INTO OUTFILE 'C:/files/MonthReportStock.csv'";
+
+    $query2 = "SELECT sales.id, stock.item_name, stock.brand, sales.qty, sales.total, sales.date_time
+    FROM sales
+    INNER JOIN stock ON stock.id=sales.item_id
+    WHERE sales.id != '0'
+    GROUP BY WEEK(sales.date_time)
+    ORDER BY WEEK(sales.date_time)
+    INTO OUTFILE 'C:/files/MonthReportSales.csv'";
+
+
+    if(mysqli_query($db_connect,$query)){
+      $msg = "Exported!\r\n";
+    }
+    else {
+      $msg = $query;
+    }
+
+    if(mysqli_query($db_connect,$query2)){
+      $msg2 = "Exported!\r\n";
+    }
+    else {
+      $msg2 = $query;
+    }
+    return $msg;
+    return $msg2;
+  }
+  
   //start the session, so you can pass data back
   session_start();
 
@@ -152,6 +248,15 @@
   }
   elseif ($form_type == "sales_edit"){
     $msg = edit_sale();
+  }
+  elseif($form_type == "CSVExportAll"){
+    export_csv_all();
+  }
+  elseif($form_type == "ExportWeek"){
+    export_csv_weekly();
+  }
+  elseif($form_type == "CSVExportMonth"){
+    export_csv_order_month();
   }
 
 
