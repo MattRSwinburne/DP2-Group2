@@ -10,5 +10,8 @@
     | <a href="./AddSales.php">Add Sale Record</a>
     | <a href="./DeleteSales.php">Delete Sale Record</a>
     | <a href="./DeleteStock.php">Delete Stock Record</a>
+    | <a href="./show_all_reports.php">Show All Reports</a>
+    | <a href="./show_weekly_reports.php">Show Reports Weekly</a>
+    | <a href="./show_monthly_reports.php">Show Reports Monthly</a>
   </p>
 </nav>
