@@ -106,6 +106,7 @@
           echo "No results.";
         }
       ?>
+    <p><b>For the export to CSV to work you need to create a folder in C: drive called "files"</b></p>
 
     </section>
   </body>
