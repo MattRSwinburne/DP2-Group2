@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Add Sale Record</title>
-</head>
-<body>
-<!-- Get an array of stock items from the database -->
 <?php
+$title = "Add Sales";
+include "inc/html-head.php";
+
+//<!-- Get an array of stock items from the database -->
 $items = array();
 $itemsJS = array();
 

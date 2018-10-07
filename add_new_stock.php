@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-      <title>Add Stock</title>
-  </head>
-
-  <body>
-    <?php include "inc/header.php" ?>
+<?php
+    $title = "Add Stock";
+    include "inc/html-head.php";
+    include "inc/header.php" ?>
 
     <section>
       <h3>Add New Stock Record</h3>
@@ -13,7 +9,7 @@
       <aside>
         <p>
           Reminder: this page is for adding completely new stock to the database.
-          If you need to add new deliveries to existing stock records, use <a href="edit_stock">edit stock</a>.
+          If you need to add new deliveries to existing stock records, use <a href="show_stock">edit stock</a>.
         </p>
       </aside>
 

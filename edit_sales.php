@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-      <title>Edit Stock</title>
-  </head>
-
-  <body>
-    <?php include "inc/header.php" ?>
+<?php
+    $title = "Edit A Sale";
+    include "inc/html-head.php";
+    include "inc/header.php" ?>
 
     <section>
       <?php

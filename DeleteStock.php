@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Delete Stock</title>
-</head>
-<body>
-<!-- Get an array of items from the database -->
 <?php
+    $title = "Delete Stock";
+    include "inc/html-head.php";
+
+// Get an array of items from the database
 $items = array();
 $itemsJS = array();
 

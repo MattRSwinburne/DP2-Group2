@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Delete Sale Record</title>
-</head>
-<body>
-<!-- Get an array of sales from the database -->
 <?php
+    $title = "Delete A Sales Record";
+    include "inc/html-head.php";
+
+// <!-- Get an array of sales from the database -->
 $sales = array();
 $salesJS = array();
 $items = array();

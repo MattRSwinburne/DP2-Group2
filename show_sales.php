@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-      <title>Current Sales</title>
-  </head>
-
-  <body>
-    <?php include "inc/header.php" ?>
+<?php
+    $title = "Show Sales";
+    include "inc/html-head.php";
+    include "inc/header.php" ?>
 
     <aside name="server_message" id="server_message">
       <?php

@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-      <title>TITLE GOES HERE</title>
-  </head>
-
-  <body>
-    <?php include "inc/header.php" ?>
+<?php
+    $title = "PAGE TITLE";
+    include "inc/html-head.php";
+    include "inc/header.php" ?>
 
     <section>
       <p>MAIN SECTION HERE</p>

@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<head>
-	<title>Delete Stock Record</title>
-</head>
-<?php include "inc/header.php" ?>
-<body>
 <?php
+    $title = "Delete Stock";
+    include "inc/html-head.php";
+		include "inc/header.php";
+		
 // Grab variables from form post
 if (!isset($_POST["stockId"]))
 {
@@ -50,7 +48,7 @@ if (!isset($selectedDBStock))
 	die ("Form data mismatch: Stock not found in database");
 }
 
-$sql = "UPDATE `stock` SET `active` = '0', `qty` = '0' WHERE `stock`.`id` = " . $selectedDBStock['id']; 
+$sql = "UPDATE `stock` SET `active` = '0', `qty` = '0' WHERE `stock`.`id` = " . $selectedDBStock['id'];
 
 // Landing page
 if (mysqli_query($dbconn, $sql))

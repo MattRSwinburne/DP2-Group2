@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<head>
-	<title>Add Sale Record</title>
-</head>
-<?php include "inc/header.php" ?>
-<body>
 <?php
+    $title = "Add Sales";
+    include "inc/html-head.php";
+		include "inc/header.php"
+		
 // Grab variables from form post
 if (isset($_POST["itemId"]))
 {

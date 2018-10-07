@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<head>
-	<title>Delete Sale Record</title>
-</head>
-<?php include "inc/header.php" ?>
-<body>
 <?php
+    $title = "Delete A Sale";
+    include "inc/html-head.php";
+		include "inc/header.php"
+
 // Grab variables from form post
 if (!isset($_POST["saleId"]))
 {
