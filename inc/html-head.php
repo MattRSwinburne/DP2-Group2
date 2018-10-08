@@ -8,6 +8,7 @@
     echo $title;
     ?>
   </title>
+	<link rel="stylesheet" type="text/css" href="scripts/colours.css">
   <link rel="stylesheet" type="text/css" href="scripts/layout.css">
 </head>
 <body>

@@ -1,0 +1,57 @@
+:root {
+  --main-colour: white;
+  --main-contrast: black;
+  --main-highlight: grey;
+  --secondary-highlight: dimgrey;
+  --secondary-contrast: lightgrey;
+  --header-gradient: rgba(55, 55, 55, 0.6);
+  --table-row-contrast: whitesmoke;
+}
+
+body {
+  background-color: var(--main-colour);
+}
+
+a {
+  color: var(--main-contrast);
+}
+
+nav {
+  border-color: var(--main-contrast);
+  background-color: var(--main-highlight);
+}
+
+footer {
+  background-color: var(--main-highlight);
+}
+
+form button {
+  background-color: var(--secondary-highlight);
+}
+
+form button:hover {
+  background-color: var(--secondary-contrast);
+}
+
+nav button {
+  background-color: var(--main-highlight);
+  color: var(--main-contrast);
+}
+nav button:hover {
+  background-color: var(--secondary-highlight);
+  color: var(--secondary-contrast);
+}
+
+header {
+  background-image: linear-gradient(to top right, var(--header-gradient), rgba(0,0,0,0))
+}
+
+tr:nth-child(even) {
+  background-color: var(--table-row-contrast);
+}
+
+input, select {
+  background-color: var(--main-colour);
+  border-color: var(--secondary-contrast);
+  color: var(--main-contrast);
+}

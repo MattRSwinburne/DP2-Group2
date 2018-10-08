@@ -1,0 +1,100 @@
+body {
+  padding-left: 3em;
+  padding-right: 3em;
+  font-family: sans-serif;
+}
+nav {
+  width: 100%;
+  margin: none;
+  padding: none;
+}
+
+footer p {
+  padding: 2px;
+}
+
+aside {
+  padding: 0.2em;
+}
+
+table {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+  border-collapse: collapse;
+  padding: 5px;
+}
+td {
+  padding: 2px;
+}
+
+section {
+  padding: 0.2em;
+}
+
+form button {
+  padding: 0.5em;
+  margin: 0.2em;
+  border-radius: 6px;
+  border-style: none;
+}
+
+nav button {
+  margin: none;
+  float: left;
+  border-style: none;
+  padding: 0.8em 0.7em 0.8em 0.7em;
+  font-size: 1em;
+
+}
+
+nav:after {
+  content: "";
+clear: both;
+display: table;
+}
+
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+header {
+  font-size: 2em;
+  margin: none;
+  padding: 0.2em;
+  border-radius: 8px;
+  height: 3em;
+  line-height: 3em;
+  width: 98%;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+input {
+  border-style: solid;
+  width: 18em;
+}
+
+#sales-search-total, #stock-search-qty, #sales-search-qty, #stock-search-price {
+  width: 15em;
+}
+
+#sales-search-date {
+  width: 9em;
+}
+
+select {
+  border-style: solid;
+}
+
+label {
+  display: block;
+  width: 100%;
+  font-size: 0.7em;
+  margin-left: -0.5em;
+}
+
+form {
+  padding-left: 1em;
+}

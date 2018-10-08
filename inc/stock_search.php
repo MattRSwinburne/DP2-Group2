@@ -40,7 +40,7 @@ if(!isset($_GET["price"])) {
       <option value="<" <?php if($_GET["qty_range_symbol"] == "<") {echo 'selected="selected"';}?>>&lt;</option>
       <option value="=" <?php if($_GET["qty_range_symbol"] == "=") {echo 'selected="selected"';}?>>=</option>
     </select>
-    <input type="number" name="qty" id="qty" value="<?php echo $_GET["qty"] ?>"/>
+    <input type="number" name="qty" id="stock-search-qty" value="<?php echo $_GET["qty"] ?>"/>
     <br />
     <label for="price">Price: </label>
     <select name="price_range_symbol">
@@ -48,5 +48,5 @@ if(!isset($_GET["price"])) {
       <option value="<" <?php if($_GET["price_range_symbol"] == "<") {echo 'selected="selected"';}?>>&lt;</option>
       <option value="=" <?php if($_GET["price_range_symbol"] == "=") {echo 'selected="selected"';}?>>=</option>
     </select>
-    <input type="number" step="any" name="price" id="price" value="<?php echo $_GET["price"] ?>"/>
+    <input type="number" step="any" name="price" id="stock-search-price" value="<?php echo $_GET["price"] ?>"/>
     <br />

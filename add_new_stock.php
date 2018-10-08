@@ -9,7 +9,7 @@
       <aside>
         <p>
           Reminder: this page is for adding completely new stock to the database.
-          If you need to add new deliveries to existing stock records, use <a href="show_stock">edit stock</a>.
+          If you need to add new deliveries to existing stock records, use <a href="show_stock.php">edit stock</a>.
         </p>
       </aside>
 

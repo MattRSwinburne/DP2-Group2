@@ -44,7 +44,7 @@ if(!isset($_GET["date"])) {
       <option value="<" <?php if($_GET["qty_range_symbol"] == "<") {echo 'selected="selected"';}?>>&lt;</option>
       <option value="=" <?php if($_GET["qty_range_symbol"] == "=") {echo 'selected="selected"';}?>>=</option>
     </select>
-    <input type="number" name="qty" id="qty" value="<?php echo $_GET["qty"] ?>"/>
+    <input type="number" name="qty" id="sales-search-qty" value="<?php echo $_GET["qty"] ?>"/>
     <br />
     <label for="total">Total: </label>
     <select name="total_range_symbol">
@@ -52,10 +52,7 @@ if(!isset($_GET["date"])) {
       <option value="<" <?php if($_GET["total_range_symbol"] == "<") {echo 'selected="selected"';}?>>&lt;</option>
       <option value="=" <?php if($_GET["total_range_symbol"] == "=") {echo 'selected="selected"';}?>>=</option>
     </select>
-    <input type="number" step="any" name="total" id="total" value="<?php echo $_GET["total"] ?>"/>
+    <input type="number" step="any" name="total" id="sales-search-total" value="<?php echo $_GET["total"] ?>"/>
     <br />
     <label for="date">Date: </label>
-    <input type="date" name="date" id="date" />
-    <br />
-
-    <?php echo "Date: " . $_GET["date"]; ?>
+    <input type="date" name="date" id="sales-search-date" />
