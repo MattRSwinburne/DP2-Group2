@@ -71,7 +71,7 @@
               echo "<td>" . $row['brand'] . "</td>\n";
               echo "<td>" . $row['qty'] . "</td>\n";
               echo "<td>$" . number_format($row['price']/100, 2) . "</td>\n";
-              echo "<td><a href='edit_stock.php?stockid=" . $row['id'] . "'>edit</a>";
+              echo "<td><a href='edit_stock.php?stockid=" . $row['id'] . "'class='editbutton'>edit</a>";
               echo "</tr>\n";
             }?>
           </table>
