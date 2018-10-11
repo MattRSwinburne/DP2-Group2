@@ -138,7 +138,8 @@
     FROM sales
     INNER JOIN stock ON stock.id=sales.item_id
     WHERE sales.id != '0'
-    INTO OUTFILE 'C:/files/AllReport.csv'";
+    INTO OUTFILE 'C:/files/AllReport.csv'"
+    ."FIELDS TERMINATED BY ','";
 
 
     if(mysqli_query($db_connect,$query)){
@@ -158,7 +159,8 @@
 
     $query = "SELECT * FROM stock
     WHERE active != '0'
-    INTO OUTFILE 'C:/files/WeekReportStock.csv'";
+    INTO OUTFILE 'C:/files/WeekReportStock.csv'"
+    . "FIELDS TERMINATED BY ','";
 
     $query2 = "SELECT sales.id, stock.item_name, stock.brand, sales.qty, sales.total, sales.date_time
     FROM sales
@@ -166,7 +168,8 @@
     WHERE sales.id != '0'
     GROUP BY WEEK(sales.date_time)
     ORDER BY WEEK(sales.date_time)
-    INTO OUTFILE 'C:/files/WeekReportSales.csv'";
+    INTO OUTFILE 'C:/files/WeekReportSales.csv'"
+    . "FIELDS TERMINATED BY ','";
 
 
     if(mysqli_query($db_connect,$query)){
@@ -177,10 +180,10 @@
     }
 
     if(mysqli_query($db_connect,$query2)){
-      $msg2 = "Exported!\r\n";
+      $msg = "Exported!\r\n";
     }
     else {
-      $msg2 = $query;
+      $msg = $query;
     }
     return $msg;
     return $msg2;
@@ -194,7 +197,8 @@
 
     $query = "SELECT * FROM stock
     WHERE active != '0'
-    INTO OUTFILE 'C:/files/MonthReportStock.csv'";
+    INTO OUTFILE 'C:/files/MonthReportStock.csv'"
+    . "FIELDS TERMINATED BY ','";
 
     $query2 = "SELECT sales.id, stock.item_name, stock.brand, sales.qty, sales.total, sales.date_time
     FROM sales
@@ -202,7 +206,8 @@
     WHERE sales.id != '0'
     GROUP BY WEEK(sales.date_time)
     ORDER BY WEEK(sales.date_time)
-    INTO OUTFILE 'C:/files/MonthReportSales.csv'";
+    INTO OUTFILE 'C:/files/MonthReportSales.csv'"
+    . "FIELDS TERMINATED BY ','";
 
 
     if(mysqli_query($db_connect,$query)){
@@ -213,10 +218,10 @@
     }
 
     if(mysqli_query($db_connect,$query2)){
-      $msg2 = "Exported!\r\n";
+      $msg = "Exported!\r\n";
     }
     else {
-      $msg2 = $query;
+      $msg = $query;
     }
     return $msg;
     return $msg2;
@@ -250,13 +255,13 @@
     $msg = edit_sale();
   }
   elseif($form_type == "CSVExportAll"){
-    export_csv_all();
+    $msg = export_csv_all();
   }
   elseif($form_type == "ExportWeek"){
-    export_csv_weekly();
+    $msg = export_csv_weekly();
   }
   elseif($form_type == "CSVExportMonth"){
-    export_csv_order_month();
+    $msg = export_csv_order_month();
   }
 
 
@@ -282,5 +287,14 @@
   }
   if (strstr($form_type, "sales")){
     header("Location: /DP2-Group2/show_sales.php");
+  }
+  if (strstr($form_type, "CSVExportAll")){
+    header("Location: /DP2-Group2/show_all_reports.php");
+  }
+  if (strstr($form_type, "ExportWeek")){
+    header("Location: /DP2-Group2/show_weekly_reports.php");
+  }
+  if (strstr($form_type, "CSVExportMonth")){
+    header("Location: /DP2-Group2/show_monthly_reports.php");
   }
 ?>
