@@ -33,6 +33,14 @@ form button:hover {
   background-color: var(--secondary-contrast);
 }
 
+a.editbutton {
+  background-color: var(--secondary-contrast);
+}
+
+a.editbutton:hover {
+  background-color: var(--secondary-contrast);
+}
+
 nav button {
   background-color: var(--main-highlight);
   color: var(--main-contrast);

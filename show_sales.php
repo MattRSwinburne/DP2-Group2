@@ -80,7 +80,7 @@
               echo "<td>" . $row['qty'] . "</td>\n";
               echo "<td>" . "$" . number_format($row['total']/100, 2) . "</td>\n";
               echo "<td>" . $row['date_time'] . "</td>\n";
-              echo "<td><a href='edit_sales.php?saleid=". $row['id']."'>edit</a>";
+              echo "<td><a href='edit_sales.php?saleid=". $row['id']."' class='editbutton'>edit</a>";
               echo "</tr>\n";
             }?>
           </table>
