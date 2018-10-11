@@ -1,7 +1,7 @@
 <?php
     $title = "Delete A Sale";
     include "inc/html-head.php";
-		include "inc/header.php"
+	include "inc/header.php";
 
 // Grab variables from form post
 if (!isset($_POST["saleId"]))
