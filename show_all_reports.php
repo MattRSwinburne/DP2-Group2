@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-      <title>Current Stock</title>
-  </head>
-
-  <body>
-    <?php include "inc/header.php" ?>
+<?php
+$title = "Report: all sales";
+include "inc/html-head.php";
+include "inc/header.php" ?>
 
     <aside name="server_message" id="server_message">
       <?php
